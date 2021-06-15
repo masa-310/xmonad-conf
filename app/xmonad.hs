@@ -19,6 +19,7 @@ import XMonad.Layout.WorkspaceDir (workspaceDir, changeDir)
 import XMonad.Layout.Drawer (onLeft, simpleDrawer)
 import XMonad.Layout.Dishes (Dishes(Dishes))
 import XMonad.Layout.DragPane
+import XMonad.Layout.Maximize (maximizeWithPadding, maximizeRestore)
 
 -- Prompt
 import XMonad.Prompt
@@ -52,14 +53,14 @@ layoutHook_ =
     $ avoidStruts
     $ toggleLayouts (noBorders Full)
     $ spacingRaw True (Border 0 5 5 5) True (Border 5 5 5 5) True
-    $ ResizableTall 1 (3/100) (3/5) []
+    $ maximizeWithPadding 10 (ResizableTall 1 (3/100) (3/5) []
 -- can use something useful?
 --  $ drawer `onLeft` (ResizableTall 1 (3/100) (3/5) [])
 --  ||| Dishes 2 (1/6)
 --  ||| dragPane Horizontal 0.1 0.5
       ||| (ThreeColMid 1 (3/100) (1/2))
       ||| (TwoPane (3/100) (3/5))
-      ||| Full
+      ||| Full)
   where drawer = simpleDrawer 0.01 0.3 (ClassName "Rhythmbox" `Or` ClassName "Xchat")
 
 startupHook_ = do
@@ -77,7 +78,8 @@ main = do
       , logHook = xmobarLogHook xmobarProc
     } `additionalKeys` [
     ((modMask_, xK_c), changeDir def)
-    , ((modMask_, xK_f), launchApp def "feh" )
+    , ((modMask_, xK_f), withFocused (sendMessage . maximizeRestore))
+    -- , ((modMask_, xK_h), launchApp def "feh" )
     , ((modMask_, xK_e), launchApp def "evince" )
     , ((modMask_, xK_n), do 
       date <- io $ liftM (formatTime defaultTimeLocale "[%Y-%m-%d %H:%M] ") getZonedTime
