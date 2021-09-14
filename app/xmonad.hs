@@ -2,8 +2,7 @@ import Control.Monad
 import Data.Time.Format (formatTime, defaultTimeLocale)
 import Data.Time (getZonedTime)
 
-import XMonad
--- additionalKeysP
+import XMonad -- additionalKeysP
 import XMonad.Util.EZConfig (additionalKeys)
 
 -- layout
@@ -136,6 +135,12 @@ projects = [
         spawn "lxterminal --command tmux"
     }
   , Project {
+    projectName = "8_notion"
+    , projectDirectory = "~"
+    , projectStartHook = Just $ do
+        spawn "notion-app"
+    }
+  , Project {
     projectName = "9_slack"
     , projectDirectory = "~"
     , projectStartHook = Just $ do
@@ -158,10 +163,10 @@ main = do
     ((modMask_, xK_c), changeDir prompt_conf )
     , ((modMask_, xK_f), withFocused (sendMessage . maximizeRestore))
     -- , ((modMask_, xK_h), launchApp def "feh" )
-    , ((modMask_, xK_e), launchApp prompt_conf "evince" )
+    -- , ((modMask_, xK_e), launchApp prompt_conf "evince" )
     , ((modMask_, xK_n), do 
       date <- io $ liftM (formatTime defaultTimeLocale "[%Y-%m-%d %H:%M] ") getZonedTime
-      appendFilePrompt' prompt_conf (date ++) $ "/home/masashi/NOTES"
+      appendFilePrompt' prompt_conf (date ++) $ "~/NOTES"
     )
     , ((modMask_, xK_g), promptSearchBrowser (greenXPConfig { font = myfont }) googleChrome google)
     , ((modMask_, xK_d), spawn "dmenu_run")
