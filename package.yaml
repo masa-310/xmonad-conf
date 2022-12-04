@@ -24,7 +24,7 @@ library:
 
 dependencies:
 - base >= 4.7 && < 5
-- xmonad == 0.17.0
+- xmonad == 0.17.1
 - xmonad-contrib
 - time
 

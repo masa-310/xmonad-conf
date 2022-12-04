@@ -119,10 +119,16 @@ projects = [
     , projectStartHook = Nothing
     }
   , Project {
-    projectName = "slack"
+    projectName = "snd_screen"
     , projectDirectory = "~"
     , projectStartHook = Just $ do
         spawn "slack"
+        spawn "obsidian"
+    }
+  , Project {
+    projectName = "tmp"
+    , projectDirectory = "~"
+    , projectStartHook = Nothing
     }
   ]
 

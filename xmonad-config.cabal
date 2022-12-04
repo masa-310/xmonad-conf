@@ -1,10 +1,10 @@
 cabal-version: 1.12
 
--- This file has been generated from package.yaml by hpack version 0.34.4.
+-- This file has been generated from package.yaml by hpack version 0.35.0.
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: aa714893c5ed0588eaabb19bdfdbf452ba9940615b35cd0f5bab92e1508d6fda
+-- hash: 47dbed2ea98e7e1dcb862a9609069d4e9a2200ea4ead0bc432b3a945744ff536
 
 name:           xmonad-config
 version:        0.1.0.0
@@ -37,7 +37,7 @@ library
   build-depends:
       base >=4.7 && <5
     , time
-    , xmonad ==0.17.0
+    , xmonad ==0.17.1
     , xmonad-contrib
   default-language: Haskell2010
 
@@ -51,7 +51,7 @@ executable xmonad-config
   build-depends:
       base >=4.7 && <5
     , time
-    , xmonad ==0.17.0
+    , xmonad ==0.17.1
     , xmonad-config
     , xmonad-contrib
   default-language: Haskell2010
