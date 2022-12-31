@@ -45,7 +45,6 @@ import Control.Concurrent (threadDelay)
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen, addEwmhWorkspaceSort)
 import XMonad.Hooks.StatusBar (withSB)
 
-import XMobar (xmobarLogHook, spawnXmobar)
 import Polybar (polybar)
 
 main :: IO()
@@ -71,8 +70,8 @@ layoutHook_ =
 --  $ drawer `onLeft` (ResizableTall 1 (3/100) (3/5) [])
 --  ||| Dishes 2 (1/6)
 --  ||| dragPane Horizontal 0.1 0.5
-      ||| (ThreeColMid 1 (3/100) (1/2))
-      ||| (TwoPane (3/100) (3/5))
+      ||| ThreeColMid 1 (3/100) (1/2)
+      ||| TwoPane (3/100) (3/5)
       ||| Full)
   where drawer = simpleDrawer 0.01 0.3 (ClassName "Rhythmbox" `Or` ClassName "Xchat")
 
@@ -84,7 +83,7 @@ startupHook_ = do
   removeWorkspaceByTag "1"
   removeWorkspaceByTag "2"
 
-prompt_conf = def
+promptConf = def
     { promptBorderWidth = 1
     , alwaysHighlight = True
     , height = 22
@@ -134,25 +133,23 @@ projects = [
 
 main = do
   replace
-  xmonad . withSB polybar . addEwmhWorkspaceSort (pure $ filterOutWs $ [""]) . ewmhFullscreen . ewmh . docks $ dynamicProjects projects $ def {
+  xmonad . withSB polybar . addEwmhWorkspaceSort (pure $ filterOutWs [""]) . ewmhFullscreen . ewmh . docks $ dynamicProjects projects $ def {
       terminal        = terminal_
       , modMask       = modMask_
       , layoutHook    = layoutHook_
       , startupHook   = startupHook_
-      -- , logHook = xmobarLogHook xmobarProc
       , workspaces = workspaces_
     } `additionalKeys` [
-    ((modMask_, xK_c), changeDir prompt_conf )
-    , ((modMask_, xK_f), withFocused (sendMessage . maximizeRestore))
+    ((modMask_, xK_c), changeDir promptConf ) , ((modMask_, xK_f), withFocused (sendMessage . maximizeRestore))
     -- , ((modMask_, xK_h), launchApp def "feh" )
-    -- , ((modMask_, xK_e), launchApp prompt_conf "evince" )
+    -- , ((modMask_, xK_e), launchApp promptConf "evince" )
     , ((modMask_, xK_n), do 
-        date <- io $ liftM (formatTime defaultTimeLocale "[%Y-%m-%d %H:%M] ") getZonedTime
-        appendFilePrompt' prompt_conf (date ++) $ "~/NOTES"
+        date <- io $ fmap (formatTime defaultTimeLocale "[%Y-%m-%d %H:%M] ") getZonedTime
+        appendFilePrompt' promptConf (date ++)  "~/NOTES"
     )
     , ((modMask_, xK_g), promptSearchBrowser (greenXPConfig { font = myfont }) googleChrome google)
     , ((modMask_, xK_d), spawn "dmenu_run")
-    , ((modMask_, xK_space), switchProjectPrompt prompt_conf)
-    , ((modMask_, xK_slash), shiftToProjectPrompt prompt_conf)
+    , ((modMask_, xK_space), switchProjectPrompt promptConf)
+    , ((modMask_, xK_slash), shiftToProjectPrompt promptConf)
 
     ]

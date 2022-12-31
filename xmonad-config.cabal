@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 47dbed2ea98e7e1dcb862a9609069d4e9a2200ea4ead0bc432b3a945744ff536
+-- hash: 3a462d79202bdfee665b296759b66c50163f4412197312994fce1384b2374244
 
 name:           xmonad-config
 version:        0.1.0.0
@@ -29,7 +29,6 @@ library
   exposed-modules:
       Polybar
       StatusBarPP
-      XMobar
   other-modules:
       Paths_xmonad_config
   hs-source-dirs:
