@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 3a462d79202bdfee665b296759b66c50163f4412197312994fce1384b2374244
+-- hash: 32bbe311a999832fe130562e60d807003fdb2826e860f731681bab6e835bb5c6
 
 name:           xmonad-config
 version:        0.1.0.0
@@ -27,6 +27,7 @@ source-repository head
 
 library
   exposed-modules:
+      Config
       Polybar
       StatusBarPP
   other-modules:
@@ -35,6 +36,7 @@ library
       src
   build-depends:
       base >=4.7 && <5
+    , data-default-class
     , time
     , xmonad ==0.17.1
     , xmonad-contrib
@@ -49,6 +51,7 @@ executable xmonad-config
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
+    , data-default-class
     , time
     , xmonad ==0.17.1
     , xmonad-config

@@ -20,13 +20,15 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/masa-310/xmonad-config#readme>
 
 library:
-  source-dirs: src
+  source-dirs:
+    - src
 
 dependencies:
 - base >= 4.7 && < 5
 - xmonad == 0.17.1
 - xmonad-contrib
 - time
+- data-default-class
 
 executables:
   xmonad-config:
