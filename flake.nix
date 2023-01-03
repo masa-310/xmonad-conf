@@ -25,8 +25,8 @@
         pkgs = import nixpkgs { inherit system overlays; inherit (haskellNix) config; };
         flake = pkgs.xmonad-config-project.flake {};
       in flake // {
-        legacyPackages = pkgs;
-        package.default = flake.packages."xmonad-config:exe:xmonad-config";
+        defaultPackage = flake.packages."xmonad-config:exe:xmonad-config";
+        packages.xmonad-config = flake.packages."xmonad-config:exe:xmonad-config";
       });
 
   # --- Flake Local Nix Configuration ----------------------------
