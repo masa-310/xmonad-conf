@@ -8,12 +8,12 @@ import XMonad.Actions.Search (google, promptSearchBrowser)
 import XMonad.Layout.Maximize (maximizeRestore)
 import XMonad.Layout.WorkspaceDir (changeDir)
 import XMonad.Prompt (XPConfig (font), greenXPConfig)
-import XMonad.Util.EZConfig (additionalKeys, removeKeys)
+import XMonad.Util.EZConfig (additionalKeys, additionalMouseBindings, removeKeys)
 
 googleChrome = "/usr/bin/google-chrome-stable"
 
-additionalKeyBindings :: MyConfig -> [((ButtonMask, KeySym), X ())]
-additionalKeyBindings myConf =
+newKeyBindings :: MyConfig -> [((ButtonMask, KeySym), X ())]
+newKeyBindings myConf =
   let promptConf = getPromptConf myConf
       font = getFont myConf
       modMask = getModMask myConf
@@ -32,4 +32,4 @@ removalKeyBindings = []
 
 applyCustomKeyBindings :: MyConfig -> XConfig l -> XConfig l
 applyCustomKeyBindings myConfig xconfig =
-  (xconfig `removeKeys` removalKeyBindings) `additionalKeys` additionalKeyBindings myConfig
+  (xconfig `removeKeys` removalKeyBindings) `additionalKeys` newKeyBindings myConfig
