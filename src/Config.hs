@@ -22,8 +22,8 @@ defaultFont = "xft:DejaVu Sans Mono:alias=true:size=11:hinting=true,xft:Symbola,
 
 ninjinConfig :: Config
 ninjinConfig = def {
-  termina = "alacritty"
-  Config.font = "Inconsolata Nerd Font Mono",
+  termina = "alacritty",
+  Config.font = "Inconsolata Nerd Font Mono"
 }
 
 pandaConfig :: Config
