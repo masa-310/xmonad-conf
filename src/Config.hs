@@ -35,7 +35,7 @@ pandaConfig =
 instance Default Config where
   def =
     Config
-      { terminal = "lxterminal",
+      { terminal = "alacritty",
         Config.font = defaultFont,
         projects =
           [ Project

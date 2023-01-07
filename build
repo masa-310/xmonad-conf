@@ -1,6 +1,5 @@
 #!/bin/sh
 
 cd ~/.xmonad
-stack build
-stack install
-mv ~/.local/bin/xmonad-config "$1"
+nix build .
+ln -s ./result/bin/xmonad-config ./xmonad-x86_64-linux
