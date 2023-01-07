@@ -7,6 +7,7 @@ import XMonad.Actions.DynamicWorkspaces (removeWorkspaceByTag)
 
 customStartupHook :: MyConfig -> X ()
 customStartupHook myConf = do
+  spawn "xmodmap .Xmodmap"
   spawn "autorandr default"
   spawn "feh --bg-fill .wallpaper/wallpaper.png"
   spawn "wmname LG3D"
