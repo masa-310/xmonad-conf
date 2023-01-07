@@ -21,7 +21,10 @@ type MyConfig = Config
 defaultFont = "xft:DejaVu Sans Mono:alias=true:size=11:hinting=true,xft:Symbola,xft:Noto Color Emoji"
 
 ninjinConfig :: Config
-ninjinConfig = def
+ninjinConfig = def {
+  termina = "alacritty"
+  Config.font = "Inconsolata Nerd Font Mono",
+}
 
 pandaConfig :: Config
 pandaConfig =
