@@ -10,7 +10,7 @@ customStartupHook myConf = do
   spawn "autorandr default"
   spawn "feh --bg-fill .wallpaper/wallpaper.png"
   spawn "wmname LG3D"
-  spawn "exec --no-startup-id fcitx5 -d"
+  spawn "fcitx5 -d"
   switchProject $ head (getProjects myConf)
   removeWorkspaceByTag "1"
   removeWorkspaceByTag "2"
