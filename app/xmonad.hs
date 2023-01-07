@@ -16,7 +16,9 @@ import XMonad.Util.WorkspaceCompare (filterOutWs)
 
 main :: IO ()
 main = do
-  myConf <- maybe def mkConfigByHost <$> lookupEnv "XMONAD_HOST"
+  -- myConf <- maybe def mkConfigByHost <$> lookupEnv "XMONAD_HOST"
+
+  myConf <- pure $ mkConfigByHost "ninjin"
   let terminal = getTerminal myConf
       projects = getProjects myConf
       promptConf = getPromptConf myConf
