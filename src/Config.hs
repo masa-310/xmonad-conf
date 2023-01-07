@@ -22,7 +22,7 @@ defaultFont = "xft:DejaVu Sans Mono:alias=true:size=11:hinting=true,xft:Symbola,
 
 ninjinConfig :: Config
 ninjinConfig = def {
-  termina = "alacritty",
+  terminal = "alacritty",
   Config.font = "Inconsolata Nerd Font Mono"
 }
 
