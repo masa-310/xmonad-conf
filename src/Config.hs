@@ -26,7 +26,7 @@ gooeyTerrierConfig = def
 sulkyShibaConfig :: Config
 sulkyShibaConfig =
   def
-    { modMask = mod1Mask,
+    {
       projects =
         [ Project
             { projectName = "home",
