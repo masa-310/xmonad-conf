@@ -1,7 +1,7 @@
 module Config (MyConfig, mkConfigByHost, getTerminal, getPromptConf, getProjects, getFont, getModMask) where
 
 import Data.Default.Class
-import XMonad (KeyMask, mod1Mask, mod4Mask, xK_Tab, xK_grave)
+import XMonad (KeyMask, mod1Mask, mod4Mask, xK_Tab, xK_grave, spawn)
 import XMonad.Actions.DynamicProjects (Project (..))
 import XMonad.Prompt as Prompt
 import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
@@ -26,7 +26,19 @@ gooeyTerrierConfig = def
 sulkyShibaConfig :: Config
 sulkyShibaConfig =
   def
-    { modMask = mod1Mask
+    { modMask = mod1Mask,
+      projects =
+        [ Project
+            { projectName = "home",
+              projectDirectory = "~",
+              projectStartHook = Nothing
+            }
+        ,  Project
+            { projectName = "obsidian",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "obsidian"
+            }
+        ]
     }
 
 instance Default Config where
