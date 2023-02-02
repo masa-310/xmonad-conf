@@ -17,10 +17,7 @@ import XMonad.Util.WorkspaceCompare (filterOutWs)
 
 main :: IO ()
 main = do
-  -- myConf <- maybe def mkConfigByHost <$> lookupEnv "XMONAD_HOST"
-  args <- getArgs
-  let hostName = if length args >= 1 then (args !! 0) else "default"
-  myConf <- pure $ mkConfigByHost hostName
+  myConf <- maybe def mkConfigByHost <$> lookupEnv "XMONAD_HOST"
   let terminal = getTerminal myConf
       projects = getProjects myConf
       promptConf = getPromptConf myConf
