@@ -5,7 +5,7 @@ import Keymap (applyCustomKeyBindings)
 import Layout (customLayoutHook)
 import Polybar (polybar)
 import StartupHook (customStartupHook)
-import System.Environment (lookupEnv)
+import System.Environment (lookupEnv, getArgs)
 import XMonad
 import XMonad.Actions.DynamicProjects (dynamicProjects)
 import XMonad.Hooks.EwmhDesktops (addEwmhWorkspaceSort, ewmh, ewmhFullscreen)
@@ -14,11 +14,13 @@ import XMonad.Hooks.StatusBar (withSB)
 import XMonad.Util.Replace (replace)
 import XMonad.Util.WorkspaceCompare (filterOutWs)
 
+
 main :: IO ()
 main = do
   -- myConf <- maybe def mkConfigByHost <$> lookupEnv "XMONAD_HOST"
-
-  myConf <- pure $ mkConfigByHost "ninjin"
+  args <- getArgs
+  let hostName = if length args >= 1 then (args !! 0) else "default"
+  myConf <- pure $ mkConfigByHost hostName
   let terminal = getTerminal myConf
       projects = getProjects myConf
       promptConf = getPromptConf myConf

@@ -8,6 +8,8 @@ import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
 
 type HostName = String
 
+defaultFont = "Inconsolata Nerd Font Mono"
+
 data Config = Config
   { terminal :: String,
     font :: String,
@@ -18,16 +20,11 @@ data Config = Config
 
 type MyConfig = Config
 
-defaultFont = "xft:DejaVu Sans Mono:alias=true:size=11:hinting=true,xft:Symbola,xft:Noto Color Emoji"
+gooeyTerrierConfig :: Config
+gooeyTerrierConfig = def
 
-ninjinConfig :: Config
-ninjinConfig = def {
-  terminal = "alacritty",
-  Config.font = "Inconsolata Nerd Font Mono"
-}
-
-pandaConfig :: Config
-pandaConfig =
+sulkyShibaConfig :: Config
+sulkyShibaConfig =
   def
     { modMask = mod1Mask
     }
@@ -37,6 +34,7 @@ instance Default Config where
     Config
       { terminal = "alacritty",
         Config.font = defaultFont,
+        modMask = mod4Mask,
         projects =
           [ Project
               { projectName = "home",
@@ -68,16 +66,16 @@ instance Default Config where
               changeModeKey = xK_grave,
               historyFilter = id,
               defaultText = []
-            },
-        modMask = mod4Mask
+            }
       }
 
 mkConfigByHost :: HostName -> Config
 mkConfigByHost hostName =
   case hostName of
-    "ninjin" -> ninjinConfig
-    "panda" -> pandaConfig
-    _ -> ninjinConfig
+    "gooey-terrier" -> gooeyTerrierConfig
+    "sulky-shiba" -> sulkyShibaConfig
+    "default" -> def
+    _ -> def
 
 getTerminal :: Config -> String
 getTerminal = terminal
