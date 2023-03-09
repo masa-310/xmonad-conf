@@ -34,9 +34,24 @@ sulkyShibaConfig =
               projectStartHook = Nothing
             }
         ,  Project
+            { projectName = "ng-front-elm",
+              projectDirectory = "~/project/ng-front-elm",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
+            { projectName = "ng-back-node",
+              projectDirectory = "~/project/ng-back-node",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
             { projectName = "obsidian",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "obsidian"
+            }
+        ,  Project
+            { projectName = "slack",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "slack"
             }
         ]
     }

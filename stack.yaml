@@ -67,3 +67,18 @@ packages:
 #
 ghc-options:
   "$everything": -haddock
+
+
+nix:
+  packages:
+    - pkgconfig
+    - autoconf
+    - gcc
+    - xorg.libX11
+    - xorg.libXext
+    - xorg.libXft
+    - xorg.libXinerama
+    - xorg.libXpm
+    - xorg.libXrandr
+    - xorg.libXrender
+    - xorg.libXScrnSaver
