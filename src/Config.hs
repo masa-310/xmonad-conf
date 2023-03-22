@@ -139,6 +139,7 @@ mkConfigByHost hostName =
   case hostName of
     "gooey-terrier" -> gooeyTerrierConfig
     "sulky-shiba" -> sulkyShibaConfig
+    "stinky-husky" -> stinkyHuskyConfig
     "default" -> def
     _ -> def
 
