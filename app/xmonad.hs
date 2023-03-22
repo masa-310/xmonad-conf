@@ -5,7 +5,7 @@ import Keymap (applyCustomKeyBindings)
 import Layout (customLayoutHook)
 import Polybar (polybar)
 import StartupHook (customStartupHook)
-import System.Environment (lookupEnv)
+import System.Environment (lookupEnv, getArgs)
 import XMonad
 import XMonad.Actions.DynamicProjects (dynamicProjects)
 import XMonad.Hooks.EwmhDesktops (addEwmhWorkspaceSort, ewmh, ewmhFullscreen)
@@ -13,6 +13,7 @@ import XMonad.Hooks.ManageDocks (avoidStruts, docks)
 import XMonad.Hooks.StatusBar (withSB)
 import XMonad.Util.Replace (replace)
 import XMonad.Util.WorkspaceCompare (filterOutWs)
+
 
 main :: IO ()
 main = do

@@ -1,12 +1,14 @@
 module Config (MyConfig, mkConfigByHost, getTerminal, getPromptConf, getProjects, getFont, getModMask) where
 
 import Data.Default.Class
-import XMonad (KeyMask, mod1Mask, mod4Mask, xK_Tab, xK_grave)
+import XMonad (KeyMask, mod1Mask, mod4Mask, xK_Tab, xK_grave, spawn)
 import XMonad.Actions.DynamicProjects (Project (..))
 import XMonad.Prompt as Prompt
 import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
 
 type HostName = String
+
+defaultFont = "Inconsolata Nerd Font Mono"
 
 data Config = Config
   { terminal :: String,
@@ -18,22 +20,48 @@ data Config = Config
 
 type MyConfig = Config
 
-defaultFont = "xft:DejaVu Sans Mono:alias=true:size=11:hinting=true,xft:Symbola,xft:Noto Color Emoji"
+gooeyTerrierConfig :: Config
+gooeyTerrierConfig = def
 
-ninjinConfig :: Config
-ninjinConfig = def
-
-pandaConfig :: Config
-pandaConfig =
+sulkyShibaConfig :: Config
+sulkyShibaConfig =
   def
-    { modMask = mod1Mask
+    {
+      projects =
+        [ Project
+            { projectName = "home",
+              projectDirectory = "~",
+              projectStartHook = Nothing
+            }
+        ,  Project
+            { projectName = "ng-front-elm",
+              projectDirectory = "~/project/ng-front-elm",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
+            { projectName = "ng-back-node",
+              projectDirectory = "~/project/ng-back-node",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
+            { projectName = "obsidian",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "obsidian"
+            }
+        ,  Project
+            { projectName = "slack",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "slack"
+            }
+        ]
     }
 
 instance Default Config where
   def =
     Config
-      { terminal = "lxterminal",
+      { terminal = "alacritty",
         Config.font = defaultFont,
+        modMask = mod4Mask,
         projects =
           [ Project
               { projectName = "home",
@@ -65,16 +93,16 @@ instance Default Config where
               changeModeKey = xK_grave,
               historyFilter = id,
               defaultText = []
-            },
-        modMask = mod4Mask
+            }
       }
 
 mkConfigByHost :: HostName -> Config
 mkConfigByHost hostName =
   case hostName of
-    "ninjin" -> ninjinConfig
-    "panda" -> pandaConfig
-    _ -> ninjinConfig
+    "gooey-terrier" -> gooeyTerrierConfig
+    "sulky-shiba" -> sulkyShibaConfig
+    "default" -> def
+    _ -> def
 
 getTerminal :: Config -> String
 getTerminal = terminal
