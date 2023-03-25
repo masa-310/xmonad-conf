@@ -56,6 +56,44 @@ sulkyShibaConfig =
         ]
     }
 
+stinkyHuskyConfig :: Config
+stinkyHuskyConfig =
+  def
+    {
+      projects =
+        [ Project
+            { projectName = "home",
+              projectDirectory = "~",
+              projectStartHook = Nothing
+            }
+        ,  Project
+            { projectName = "ng-be-scala",
+              projectDirectory = "~/project/ng-backend-scala",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
+            { projectName = "ng-be-node",
+              projectDirectory = "~/project/ng-back-node",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
+            { projectName = "ng-front-elm",
+              projectDirectory = "~/project/ng-front-elm",
+              projectStartHook = Just $ spawn "tmux"
+            }
+        ,  Project
+            { projectName = "obsidian",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "obsidian"
+            }
+        ,  Project
+            { projectName = "slack",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "slack"
+            }
+        ]
+    }
+
 instance Default Config where
   def =
     Config
@@ -101,6 +139,7 @@ mkConfigByHost hostName =
   case hostName of
     "gooey-terrier" -> gooeyTerrierConfig
     "sulky-shiba" -> sulkyShibaConfig
+    "stinky-husky" -> stinkyHuskyConfig
     "default" -> def
     _ -> def
 

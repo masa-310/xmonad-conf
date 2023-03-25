@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd ~/.xmonad
+nix build .
+ln -sf ./result/bin/xmonad-config ./xmonad-x86_64-linux
