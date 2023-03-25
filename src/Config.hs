@@ -34,13 +34,13 @@ sulkyShibaConfig =
               projectStartHook = Nothing
             }
         ,  Project
-            { projectName = "ng-front-elm",
-              projectDirectory = "~/project/ng-front-elm",
+            { projectName = "ng-fe-elm",
+              projectDirectory = "~/project/ng-fe-elm",
               projectStartHook = Just $ spawn "tmux"
             }
         ,  Project
-            { projectName = "ng-back-node",
-              projectDirectory = "~/project/ng-back-node",
+            { projectName = "ng-be-node",
+              projectDirectory = "~/project/ng-be-node",
               projectStartHook = Just $ spawn "tmux"
             }
         ,  Project
