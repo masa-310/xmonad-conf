@@ -1,14 +1,14 @@
 module Config (MyConfig, mkConfigByHost, getTerminal, getPromptConf, getProjects, getFont, getModMask) where
 
 import Data.Default.Class
-import XMonad (KeyMask, mod1Mask, mod4Mask, xK_Tab, xK_grave, spawn)
+import XMonad (KeyMask, mod1Mask, mod4Mask, spawn, xK_Tab, xK_grave)
 import XMonad.Actions.DynamicProjects (Project (..))
 import XMonad.Prompt as Prompt
 import XMonad.Prompt.FuzzyMatch (fuzzyMatch)
 
 type HostName = String
 
-defaultFont = "Inconsolata Nerd Font Mono"
+defaultFont = "xft:Inconsolata Nerd Font Mono"
 
 data Config = Config
   { terminal :: String,
@@ -26,29 +26,28 @@ gooeyTerrierConfig = def
 sulkyShibaConfig :: Config
 sulkyShibaConfig =
   def
-    {
-      projects =
+    { projects =
         [ Project
             { projectName = "home",
               projectDirectory = "~",
               projectStartHook = Nothing
-            }
-        ,  Project
+            },
+          Project
             { projectName = "ng-fe-elm",
               projectDirectory = "~/project/ng-fe-elm",
               projectStartHook = Just $ spawn "tmux"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "ng-be-node",
               projectDirectory = "~/project/ng-be-node",
               projectStartHook = Just $ spawn "tmux"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "obsidian",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "obsidian"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "slack",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "slack"
@@ -59,34 +58,33 @@ sulkyShibaConfig =
 stinkyHuskyConfig :: Config
 stinkyHuskyConfig =
   def
-    {
-      projects =
+    { projects =
         [ Project
             { projectName = "home",
               projectDirectory = "~",
               projectStartHook = Nothing
-            }
-        ,  Project
+            },
+          Project
             { projectName = "ng-be-scala",
               projectDirectory = "~/project/ng-backend-scala",
               projectStartHook = Just $ spawn "tmux"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "ng-be-node",
               projectDirectory = "~/project/ng-back-node",
               projectStartHook = Just $ spawn "tmux"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "ng-front-elm",
               projectDirectory = "~/project/ng-front-elm",
               projectStartHook = Just $ spawn "tmux"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "obsidian",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "obsidian"
-            }
-        ,  Project
+            },
+          Project
             { projectName = "slack",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "slack"
@@ -111,7 +109,6 @@ instance Default Config where
           def
             { promptBorderWidth = 1,
               alwaysHighlight = True,
-              height = 22,
               historySize = 256,
               Prompt.font = defaultFont,
               -- , bgColor = myBackgroundColor
@@ -119,7 +116,7 @@ instance Default Config where
               -- , bgHLight = myBackgroundColor
               -- , fgHLight = myContentColor
               -- , borderColor = myBackgroundColor
-              position = Bottom,
+              position = CenteredAt 0.5 0.5,
               autoComplete = Just 100,
               showCompletionOnTab = False,
               searchPredicate = fuzzyMatch,
@@ -130,6 +127,7 @@ instance Default Config where
               completionKey = (0, xK_Tab),
               changeModeKey = xK_grave,
               historyFilter = id,
+              height = 100,
               defaultText = []
             }
       }

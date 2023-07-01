@@ -1,5 +1,11 @@
 #!/bin/sh
 
 cd ~/.xmonad
+
+# with nix
 nix build .
 ln -sf ./result/bin/xmonad-config ./xmonad-x86_64-linux
+
+# with stack
+# stack build
+# cp -f $(stack path --local-install-root)/bin/xmonad-config ./xmonad-x86_64-linux

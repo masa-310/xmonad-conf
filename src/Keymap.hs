@@ -2,6 +2,7 @@ module Keymap (applyCustomKeyBindings) where
 
 import Config (MyConfig, getFont, getModMask, getPromptConf)
 import Data.Map as Map
+import Tweet (mkTweetPrompt)
 import XMonad
 import XMonad.Actions.DynamicProjects (shiftToProjectPrompt, switchProjectPrompt)
 import XMonad.Actions.Search (google, promptSearchBrowser)
@@ -21,9 +22,10 @@ newKeyBindings myConf =
         ((modMask, xK_f), withFocused (sendMessage . maximizeRestore)),
         ((modMask, xK_g), promptSearchBrowser (greenXPConfig {font = font}) googleChrome google),
         ((modMask, xK_d), spawn "rofi -show run"),
-        ((modMask, xK_z), spawn "zeal"),
+        -- ((modMask, xK_z), spawn "zeal"),
         ((modMask, xK_space), switchProjectPrompt promptConf),
-        ((modMask, xK_slash), shiftToProjectPrompt promptConf)
+        ((modMask, xK_slash), shiftToProjectPrompt promptConf),
+        ((modMask, xK_z), mkTweetPrompt)
       ]
 
 removalKeyBindings :: [(ButtonMask, KeySym)]

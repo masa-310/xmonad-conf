@@ -20,6 +20,14 @@ extra-source-files:
 description:         Please see the README on GitHub at <https://github.com/masa-310/xmonad-config#readme>
 
 library:
+  exposed-modules:
+    - Config
+    - Keymap
+    - Layout
+    - Polybar
+    - StartupHook
+    - StatusBarPP
+    - Tweet
   source-dirs:
     - src
 
