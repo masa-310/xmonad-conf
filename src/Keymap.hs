@@ -19,10 +19,9 @@ newKeyBindings myConf =
       modMask = getModMask myConf
    in [ ((modMask, xK_c), changeDir promptConf),
         ((modMask, xK_f), withFocused (sendMessage . maximizeRestore)),
-        -- , ((modMask_, xK_h), launchApp def "feh" )
-        -- , ((modMask_, xK_e), launchApp promptConf "evince" )
         ((modMask, xK_g), promptSearchBrowser (greenXPConfig {font = font}) googleChrome google),
-        ((modMask, xK_d), spawn "dmenu_run"),
+        ((modMask, xK_d), spawn "rofi -show run"),
+        ((modMask, xK_z), spawn "zeal"),
         ((modMask, xK_space), switchProjectPrompt promptConf),
         ((modMask, xK_slash), shiftToProjectPrompt promptConf)
       ]
