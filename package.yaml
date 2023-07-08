@@ -27,7 +27,8 @@ library:
     - Polybar
     - StartupHook
     - StatusBarPP
-    - Tweet
+    - Memo
+    - ManageHook
   source-dirs:
     - src
 

@@ -3,9 +3,10 @@ import Control.Monad
 import Data.Maybe (fromMaybe)
 import Keymap (applyCustomKeyBindings)
 import Layout (customLayoutHook)
+import ManageHook (customManageHook)
 import Polybar (polybar)
 import StartupHook (customStartupHook)
-import System.Environment (lookupEnv, getArgs)
+import System.Environment (getArgs, lookupEnv)
 import XMonad
 import XMonad.Actions.DynamicProjects (dynamicProjects)
 import XMonad.Hooks.EwmhDesktops (addEwmhWorkspaceSort, ewmh, ewmhFullscreen)
@@ -13,7 +14,6 @@ import XMonad.Hooks.ManageDocks (avoidStruts, docks)
 import XMonad.Hooks.StatusBar (withSB)
 import XMonad.Util.Replace (replace)
 import XMonad.Util.WorkspaceCompare (filterOutWs)
-
 
 main :: IO ()
 main = do
@@ -32,5 +32,6 @@ main = do
             modMask = modMask,
             layoutHook = customLayoutHook,
             startupHook = customStartupHook myConf,
-            workspaces = []
+            workspaces = [],
+            manageHook = customManageHook
           }
