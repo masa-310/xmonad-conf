@@ -11,6 +11,7 @@ customStartupHook myConf = do
   spawn "autorandr default"
   spawn "feh --bg-fill .wallpaper/wallpaper.png"
   spawn "wmname LG3D"
+  spawn "systemctl --user import-environment XAUTHORITY DISPLAY && systemctl --user restart picom.service"
   spawn "fcitx5 -d"
   switchProject $ head (getProjects myConf)
   removeWorkspaceByTag "1"

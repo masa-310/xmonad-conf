@@ -58,7 +58,8 @@ sulkyShibaConfig =
 stinkyHuskyConfig :: Config
 stinkyHuskyConfig =
   def
-    { projects =
+    { terminal = "wezterm"
+    , projects =
         [ Project
             { projectName = "home",
               projectDirectory = "~",
