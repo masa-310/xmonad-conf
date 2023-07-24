@@ -93,6 +93,29 @@ stinkyHuskyConfig =
         ]
     }
 
+fishyRetrieverConfig :: Config
+fishyRetrieverConfig =
+  def
+    { terminal = "wezterm"
+    , projects =
+        [ Project
+            { projectName = "home",
+              projectDirectory = "~",
+              projectStartHook = Nothing
+            },
+          Project
+            { projectName = "obsidian",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "obsidian"
+            },
+          Project
+            { projectName = "slack",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "slack"
+            }
+        ]
+    }
+
 instance Default Config where
   def =
     Config
@@ -139,6 +162,7 @@ mkConfigByHost hostName =
     "gooey-terrier" -> gooeyTerrierConfig
     "sulky-shiba" -> sulkyShibaConfig
     "stinky-husky" -> stinkyHuskyConfig
+    "fishy-retriever" -> fishyRetrieverConfig
     "default" -> def
     _ -> def
 
