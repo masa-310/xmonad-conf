@@ -97,6 +97,7 @@ fishyRetrieverConfig :: Config
 fishyRetrieverConfig =
   def
     { terminal = "wezterm"
+    , modMask = mod1Mask
     , projects =
         [ Project
             { projectName = "home",
