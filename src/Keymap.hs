@@ -25,7 +25,9 @@ newKeyBindings myConf =
         ((modMask, xK_z), spawn "zeal"),
         ((modMask, xK_space), switchProjectPrompt promptConf),
         ((modMask, xK_slash), shiftToProjectPrompt promptConf),
-        ((modMask, xK_m), launchMemo "~/Obsidian\\ Vault/tweet")
+        ((modMask, xK_m), launchMemo "~/Obsidian\\ Vault/tweet"),
+        ((modMask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png",
+        ((modMask, xK_p), spawn "maim -s ~/Screenshots/$(date +%s).png")
       ]
 
 removalKeyBindings :: [(ButtonMask, KeySym)]
