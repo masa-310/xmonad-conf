@@ -25,14 +25,20 @@ newKeyBindings myConf =
         ((modMask, xK_z), spawn "zeal"),
         ((modMask, xK_space), switchProjectPrompt promptConf),
         ((modMask, xK_slash), shiftToProjectPrompt promptConf),
-        ((modMask, xK_s), spawn "maim -s | xclip -selection clipboard -t image/png"),
-        ((modMask, xK_p), spawn "maim -s ~/Screenshots/$(date +%s).png"),
-        ((modMask, xK_e), spawn "maim -s | xclip -selection clipboard -t image/png && drawing -c")
+        ((modMask, xK_z), spawn "wezterm start --class __temp-term-top"),
+        ((modMask .|. shiftMask, xK_z), spawn "wezterm start --class __temp-term-bottom"),
+        ((modMask, xK_3), spawn "maim -s ~/Screenshots/$(date +%Y-%m-%dT%T).png"),
+        ((modMask .|. shiftMask, xK_3), spawn "file=${HOME}/Screenshots/$(date +%Y-%m-%dT%T).png && maim -s $file && drawing $file"),
+        ((modMask , xK_4), spawn "maim -s | xclip -selection clipboard -t image/png"),
+        ((modMask .|. shiftMask, xK_4), spawn "maim -s | xclip -selection clipboard -t image/png && drawing -c"),
+        ((modMask, xK_5), spawn "peek")
       ]
 
-removalKeyBindings :: [(ButtonMask, KeySym)]
-removalKeyBindings = []
+removalKeyBindings :: MyConfig -> [(ButtonMask, KeySym)]
+removalKeyBindings myConf =
+  let modMask = getModMask myConf
+  in [ ]
 
 applyCustomKeyBindings :: MyConfig -> XConfig l -> XConfig l
 applyCustomKeyBindings myConfig xconfig =
-  (xconfig `removeKeys` removalKeyBindings) `additionalKeys` newKeyBindings myConfig
+  (xconfig `removeKeys` removalKeyBindings myConfig) `additionalKeys` newKeyBindings myConfig
