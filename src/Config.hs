@@ -66,26 +66,6 @@ stinkyHuskyConfig =
               projectStartHook = Nothing
             },
           Project
-            { projectName = "ng-be-scala",
-              projectDirectory = "~/project/ng-backend-scala",
-              projectStartHook = Just $ spawn "tmux"
-            },
-          Project
-            { projectName = "ng-be-node",
-              projectDirectory = "~/project/ng-back-node",
-              projectStartHook = Just $ spawn "tmux"
-            },
-          Project
-            { projectName = "ng-front-elm",
-              projectDirectory = "~/project/ng-front-elm",
-              projectStartHook = Just $ spawn "tmux"
-            },
-          Project
-            { projectName = "obsidian",
-              projectDirectory = "~",
-              projectStartHook = Just $ spawn "obsidian"
-            },
-          Project
             { projectName = "slack",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "slack"
@@ -105,9 +85,23 @@ fishyRetrieverConfig =
               projectStartHook = Nothing
             },
           Project
-            { projectName = "obsidian",
+            { projectName = "slack",
               projectDirectory = "~",
-              projectStartHook = Just $ spawn "obsidian"
+              projectStartHook = Just $ spawn "slack"
+            }
+        ]
+    }
+
+flattenCollieConfig :: Config
+flattenCollieConfig =
+  def
+    { terminal = "wezterm"
+    , modMask = mod1Mask
+    , projects =
+        [ Project
+            { projectName = "home",
+              projectDirectory = "~",
+              projectStartHook = Nothing
             },
           Project
             { projectName = "slack",
@@ -160,10 +154,9 @@ instance Default Config where
 mkConfigByHost :: HostName -> Config
 mkConfigByHost hostName =
   case hostName of
-    "gooey-terrier" -> gooeyTerrierConfig
-    "sulky-shiba" -> sulkyShibaConfig
     "stinky-husky" -> stinkyHuskyConfig
     "fishy-retriever" -> fishyRetrieverConfig
+    "flatten-collie" -> flattenCollieConfig
     "default" -> def
     _ -> def
 
