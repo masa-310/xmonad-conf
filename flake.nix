@@ -6,9 +6,9 @@
     let
       supportedSystems = [
         "x86_64-linux"
-        "x86_64-darwin"
-        "aarch64-linux"
-        "aarch64-darwin"
+        #"x86_64-darwin"
+        #"aarch64-linux"
+        #"aarch64-darwin"
       ];
     in
       flake-utils.lib.eachSystem supportedSystems (system:
@@ -18,12 +18,12 @@
             xmonad-config-project =
               final.haskell-nix.project {
                 src = ./.;
-                evalSystem = "x86_64-linux";
+                  #evalSystem = "x86_64-linux";
               };
           })
         ];
         pkgs = import nixpkgs { inherit system overlays; inherit (haskellNix) config; };
-        hls = pkgs.haskell-language-server.override { supportedGhcVersions = [ "925" ]; };
+          #hls = pkgs.haskell-language-server.override { supportedGhcVersions = [ "925" ]; };
         flake = pkgs.xmonad-config-project.flake {};
       in flake // {
         defaultPackage = flake.packages."xmonad-config:exe:xmonad-config";
@@ -31,7 +31,7 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             stack
-            hls
+                #hls
           ];
         };
       });
