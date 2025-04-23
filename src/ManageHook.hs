@@ -13,7 +13,7 @@ customManageHook =
     , className =? "Peek" --> doCenterFloat
     , className =? "Thunar" --> doSideFloat NC
     , className =? ".drawing-wrapped" --> doSideFloat NC
-    , className =? "Pavucontrol" --> doSideFloat NC
+    , className =? "pavucontrol" --> doSideFloat NC
     , className =? "__temp-term-bottom" --> doSideFloat SC
     , className =? "__temp-term-top" --> doSideFloat NC
     ]
