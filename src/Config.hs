@@ -92,6 +92,25 @@ fishyRetrieverConfig =
         ]
     }
 
+dorkyBeagleConfig :: Config
+dorkyBeagleConfig =
+  def
+    { terminal = "wezterm"
+    , modMask = mod1Mask
+    , projects =
+        [ Project
+            { projectName = "home",
+              projectDirectory = "~",
+              projectStartHook = Nothing
+            },
+          Project
+            { projectName = "slack",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "slack"
+            }
+        ]
+    }
+
 flattenCollieConfig :: Config
 flattenCollieConfig =
   def
@@ -157,6 +176,7 @@ mkConfigByHost hostName =
     "stinky-husky" -> stinkyHuskyConfig
     "fishy-retriever" -> fishyRetrieverConfig
     "flatten-collie" -> flattenCollieConfig
+    "dorky-beagle" -> dorkyBeagleConfig
     "default" -> def
     _ -> def
 
