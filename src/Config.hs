@@ -33,16 +33,6 @@ sulkyShibaConfig =
               projectStartHook = Nothing
             },
           Project
-            { projectName = "ng-fe-elm",
-              projectDirectory = "~/project/ng-fe-elm",
-              projectStartHook = Just $ spawn "tmux"
-            },
-          Project
-            { projectName = "ng-be-node",
-              projectDirectory = "~/project/ng-be-node",
-              projectStartHook = Just $ spawn "tmux"
-            },
-          Project
             { projectName = "obsidian",
               projectDirectory = "~",
               projectStartHook = Just $ spawn "obsidian"
@@ -66,9 +56,19 @@ stinkyHuskyConfig =
               projectStartHook = Nothing
             },
           Project
-            { projectName = "slack",
-              projectDirectory = "~",
-              projectStartHook = Just $ spawn "slack"
+            { projectName = "rl-dev",
+              projectDirectory = "~/projects/rl/dev",
+              projectStartHook = Just $ spawn "hx ."
+            },
+          Project
+            { projectName = "rl-main",
+              projectDirectory = "~/project/rl/main",
+              projectStartHook = Just $ spawn "hx ."
+            },
+          Project
+            { projectName = "nixos",
+              projectDirectory = "~/nixos-conf",
+              projectStartHook = Just $ spawn "hx ."
             }
         ]
     }

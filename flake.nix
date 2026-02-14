@@ -1,6 +1,7 @@
 {
   inputs.haskellNix.url = "github:input-output-hk/haskell.nix";
   # a dependency of Stack, that does not have this bug: https://github.com/commercialhaskell/rio/issues/264
+  # it causes to build ghc
   # inputs.nixpkgs.follows = "haskellNix/nixpkgs-unstable";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs?ref=pull/466258/head";
   inputs.flake-utils.url = "github:numtide/flake-utils";
