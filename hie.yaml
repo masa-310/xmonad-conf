@@ -1,0 +1,10 @@
+cradle:
+  stack:
+    - path: "./src"
+      component: "xmonad-config:lib"
+
+    - path: "./app/xmonad.hs"
+      component: "xmonad-config:exe:xmonad-config"
+
+    - path: "./app/Paths_xmonad_config.hs"
+      component: "xmonad-config:exe:xmonad-config"

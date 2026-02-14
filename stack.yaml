@@ -17,7 +17,7 @@
 #
 # resolver: ./custom-snapshot.yaml
 # resolver: https://example.com/snapshots/2018-01-01.yaml
-resolver: lts-21.25
+resolver: lts-24.30
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -68,17 +68,6 @@ packages:
 ghc-options:
   "$everything": -haddock
 
-
-nix:
-  packages:
-    - pkgconfig
-    - autoconf
-    - gcc
-    - xorg.libX11
-    - xorg.libXext
-    - xorg.libXft
-    - xorg.libXinerama
-    - xorg.libXpm
-    - xorg.libXrandr
-    - xorg.libXrender
-    - xorg.libXScrnSaver
+system-ghc: true
+install-ghc: false
+notify-if-nix-on-path: false
