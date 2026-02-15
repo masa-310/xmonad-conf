@@ -63,12 +63,17 @@ stinkyHuskyConfig =
           Project
             { projectName = "rl-main",
               projectDirectory = "~/project/rl/main",
-              projectStartHook = Just $ spawn "hx ."
+              projectStartHook = Just $ spawn "wezterm-gui start hx ."
             },
           Project
             { projectName = "nixos",
               projectDirectory = "~/nixos-conf",
-              projectStartHook = Just $ spawn "hx ."
+              projectStartHook = Just $ spawn "wezterm-gui start hx ."
+            },
+          Project
+            { projectName = "obsidian",
+              projectDirectory = "~",
+              projectStartHook = Just $ spawn "obsidian"
             }
         ]
     }
