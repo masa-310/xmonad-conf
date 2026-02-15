@@ -29,6 +29,12 @@
             xmonad-config-project = final.haskell-nix.project {
               src = ./.;
               #evalSystem = "x86_64-linux";
+              # https://github.com/input-output-hk/haskell.nix/issues/2423#issuecomment-3141982592
+              modules = [{
+                packages.unix.flags.os-string = true;
+                packages.directory.flags.os-string = true;
+                packages.process.flags.os-string = true;
+              }];
             };
           })
         ];
