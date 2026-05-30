@@ -34,7 +34,7 @@ newKeyBindings myConf =
         ((modMask , xK_4), spawn "maim -s | xclip -selection clipboard -t image/png"),
         ((modMask .|. shiftMask, xK_4), spawn "maim -s | xclip -selection clipboard -t image/png && drawing -c"),
         ((modMask, xK_5), spawn "peek"),
-        ((modMask, xK_F1), spawn "dunstify -h string:x-canonical-private-synchronous:audio \"Volume: \" -h int:value:\"`pamixer -t && pamixer --get-volume`\"")
+        ((modMask, xK_F1), spawn "dunstify -h string:x-canonical-private-synchronous:audio \"Volume: \" -h int:value:\"`pamixer -t && pamixer --get-volume`\""),
         ((modMask, xK_F2), spawn "dunstify -h string:x-canonical-private-synchronous:audio \"Volume: \" -h int:value:\"`pamixer -d 5 && pamixer --get-volume`\""),
         ((modMask, xK_F3), spawn "dunstify -h string:x-canonical-private-synchronous:audio \"Volume: \" -h int:value:\"`pamixer -i 5 && pamixer --get-volume`\""),
         ((modMask, xK_F5), spawn "brightnessctl set 10%-"),
