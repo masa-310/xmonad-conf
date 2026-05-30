@@ -38,7 +38,7 @@ newKeyBindings myConf =
         ((modMask, xK_F2), spawn "dunstify -h string:x-canonical-private-synchronous:audio \"Volume: \" -h int:value:\"`pamixer -d 5 && pamixer --get-volume`\""),
         ((modMask, xK_F3), spawn "dunstify -h string:x-canonical-private-synchronous:audio \"Volume: \" -h int:value:\"`pamixer -i 5 && pamixer --get-volume`\""),
         ((modMask, xK_F5), spawn "brightnessctl set 10%-"),
-        ((modMask, xK_F6), spawn "brightnessctl set 10%+"),
+        ((modMask, xK_F6), spawn "brightnessctl set 10%+")
       ]
 
 removalKeyBindings :: MyConfig -> [(ButtonMask, KeySym)]
