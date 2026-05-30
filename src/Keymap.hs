@@ -11,7 +11,7 @@ import XMonad.Layout.WorkspaceDir (changeDir)
 import XMonad.Prompt (XPConfig (font), greenXPConfig)
 import XMonad.Util.EZConfig (additionalKeys, additionalMouseBindings, removeKeys)
 
-googleChrome = "/usr/bin/google-chrome-stable"
+quteBrowser = "qutebrowser"
 
 newKeyBindings :: MyConfig -> [((ButtonMask, KeySym), X ())]
 newKeyBindings myConf =
@@ -20,9 +20,11 @@ newKeyBindings myConf =
       modMask = getModMask myConf
    in [ ((modMask, xK_c), changeDir promptConf),
         ((modMask, xK_f), withFocused (sendMessage . maximizeRestore)),
-        ((modMask, xK_g), promptSearchBrowser (greenXPConfig {font = font}) googleChrome google),
+        ((modMask, xK_g), promptSearchBrowser (greenXPConfig {font = font}) quteBrowser google),
         ((modMask, xK_d), spawn "rofi -show run"),
-        ((modMask, xK_z), spawn "zeal"),
+        ((modMask, xK_p), spawn "rofi-1pass"),
+        ((modMask, xK_b), spawn "rofi-bluetooth"),
+        ((modMask, xK_s), spawn "rofi -show"),
         ((modMask, xK_space), switchProjectPrompt promptConf),
         ((modMask, xK_slash), shiftToProjectPrompt promptConf),
         ((modMask, xK_z), spawn "wezterm-gui start --class __temp-term-top"),
