@@ -13,7 +13,7 @@ customManageHook =
     , className =? "Thunar" --> doSideFloat NC
     , className =? "com.github.maoschanz.drawing" --> doSideFloat NC
     , className =? "pavucontrol" --> doSideFloat NC
-    , className =? "zenity" --> doCenterFloat NC
+    , className =? "zenity" --> doCenterFloat
     , className =? "__temp-term-bottom" --> doSideFloat SC
     , className =? "__temp-term-top" --> doSideFloat NC
     ]
